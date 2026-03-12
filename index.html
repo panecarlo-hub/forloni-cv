@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Gian Luca Forloni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #1a1a2e;
+      --color-accent: #2d6a8f;
+      --color-text: #2c2c2c;
+      --color-text-light: #555;
+      --color-border: #d0d0d0;
+      --color-bg: #ffffff;
+      --color-section-bg: #f7f8fa;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html {
+      font-size: 10px;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 1rem;
+      color: var(--color-text);
+      background: #e8e8e8;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      margin: 10mm auto;
+      background: var(--color-bg);
+      padding: 18mm 20mm 14mm 20mm;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .page {
+        margin: 0;
+        padding: 18mm 20mm 14mm 20mm;
+        page-break-after: always;
+        box-shadow: none;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+    }
+
+    @media screen {
+      .page {
+        box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+        border-radius: 2px;
+      }
+    }
+
+    /* === HEADER === */
+    .header {
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+
+    .header .headline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.8rem;
+      font-size: 0.92rem;
+      color: var(--color-text-light);
+    }
+
+    .contact-row span {
+      white-space: nowrap;
+    }
+
+    .contact-row a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    /* === SECTIONS === */
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-bottom: 0.35rem;
+      border-bottom: 1.5px solid var(--color-border);
+      margin-bottom: 0.8rem;
+    }
+
+    /* === SUMMARY === */
+    .summary p {
+      font-size: 1rem;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    /* === EXPERIENCE === */
+    .experience-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .exp-date {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-description {
+      font-size: 0.92rem;
+      color: var(--color-text-light);
+      margin-bottom: 0.35rem;
+      line-height: 1.55;
+    }
+
+    .exp-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exp-list li {
+      font-size: 0.92rem;
+      color: var(--color-text);
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.2rem;
+      line-height: 1.5;
+    }
+
+    .exp-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* === SKILLS === */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2.5rem;
+    }
+
+    .skill-category h4 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-category ul li {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.15rem;
+      line-height: 1.5;
+    }
+
+    .skill-category ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+    }
+
+    /* === EDUCATION === */
+    .education-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .education-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .edu-school {
+      font-size: 0.92rem;
+      color: var(--color-text-light);
+    }
+
+    .edu-year {
+      font-size: 0.88rem;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    /* === LANGUAGES === */
+    .languages-list {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-item {
+      font-size: 0.95rem;
+    }
+
+    .lang-name {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .lang-level {
+      color: var(--color-text-light);
+    }
+
+    /* === FOOTER / PRIVACY === */
+    .privacy {
+      font-size: 0.78rem;
+      color: #999;
+      margin-top: 1.2rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>Gian Luca Forloni</h1>
+      <div class="headline">CRM &amp; Marketing Automation · Hospitality</div>
+      <div class="contact-row">
+        <span>Milano, Italia</span>
+        <span>+39 338 891 2901</span>
+        <span><a href="mailto:gianluca.forloni@gmail.com">gianluca.forloni@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/gianlucaforloni" target="_blank">linkedin.com/in/gianlucaforloni</a></span>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="section summary">
+      <h2 class="section-title">Profilo</h2>
+      <p>
+        Professionista con esperienza nel settore hospitality e nelle piattaforme di CRM e Marketing Automation. Progetto e implemento strategie di customer lifecycle basate sui dati dei clienti, sviluppando campagne marketing, segmentazione del database e programmi di fidelizzazione. Coordino progetti tra team marketing, commerciale e tecnico, traducendo esigenze di business in workflow di comunicazione automatizzata e iniziative di direct marketing orientate alla crescita del valore dei clienti e alla promozione dei servizi.
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+      <h2 class="section-title">Esperienza Professionale</h2>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Project Manager · Responsabile Hospitality</span>
+          <span class="exp-date">2018 – Presente</span>
+        </div>
+        <div class="exp-company">White Rabbit – Zucchetti Group, Milano</div>
+        <ul class="exp-list">
+          <li>Gestione di progetti CRM e Marketing Automation per oltre 20 clienti tra hotel indipendenti e gruppi alberghieri</li>
+          <li>Supervisione del verticale hospitality e coordinamento delle attività progettuali legate al settore</li>
+          <li>Gestione onboarding clienti, configurazione e supporto all'adozione della piattaforma</li>
+          <li>Supporto commerciale pre e post vendita con demo prodotto e attività di upselling</li>
+          <li>Progettazione workflow di comunicazione lungo il guest journey (pre-stay, in-stay, post-stay)</li>
+          <li>Definizione di strategie di segmentazione e attivazione di campagne DEM e promozionali</li>
+          <li>Sviluppo di iniziative di fidelizzazione e programmi loyalty</li>
+          <li>Sistemi di survey per la raccolta e analisi dei feedback degli ospiti</li>
+          <li>Coordinamento tra clienti, team tecnico e product team per evoluzione e miglioramento della piattaforma</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Cluster Marketing Manager</span>
+          <span class="exp-date">2015 – 2017</span>
+        </div>
+        <div class="exp-company">Marsa Malaz Kempinski, Doha</div>
+        <p class="exp-description">
+          Responsabile delle attività di marketing B2C, digital e social per le proprietà del cluster. Gestione budget marketing, coordinamento con il reparto vendite e supervisione delle attività di comunicazione e promozione.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Guest Relations Team Leader</span>
+          <span class="exp-date">2012 – 2015</span>
+        </div>
+        <div class="exp-company">JW Marriott Marquis, Dubai</div>
+        <p class="exp-description">
+          Gestione del team di guest relations e delle attività di accoglienza ospiti e VIP, con responsabilità sulla qualità dell'esperienza durante il soggiorno.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Guest Relations</span>
+          <span class="exp-date">2011 – 2012</span>
+        </div>
+        <div class="exp-company">Hon Tam Resort, Vietnam</div>
+        <p class="exp-description">
+          Supporto alle attività di accoglienza ospiti e gestione delle richieste durante il soggiorno.
+        </p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2 class="section-title">Competenze</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>CRM &amp; Marketing</h4>
+          <ul>
+            <li>CRM &amp; Customer Lifecycle</li>
+            <li>Marketing Automation e workflow di comunicazione</li>
+            <li>Segmentazione e gestione database clienti</li>
+            <li>Strategie di fidelizzazione e loyalty</li>
+            <li>Digital Marketing Hospitality</li>
+            <li>Campagne di direct marketing e promozioni hotel</li>
+            <li>Customer journey e comunicazione con gli ospiti</li>
+            <li>Survey di soddisfazione e gestione feedback</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>MarTech &amp; Data</h4>
+          <ul>
+            <li>Customer Data Platform (CDP)</li>
+            <li>Analisi dati e performance marketing</li>
+            <li>Integrazione dati tra sistemi hospitality</li>
+            <li>Landing page e strumenti digitali per acquisizione contatti</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h2 class="section-title">Formazione</h2>
+      <div class="education-item">
+        <div class="edu-title">Master in Marketing e Comunicazione Digitale</div>
+        <div class="edu-school">Il Sole 24 Ore Business School</div>
+        <div class="edu-year">2018</div>
+      </div>
+      <div class="education-item">
+        <div class="edu-title">BBA (Honours) in Hospitality Management</div>
+        <div class="edu-school">Glion Institute of Higher Education</div>
+        <div class="edu-year">2012</div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section class="section">
+      <h2 class="section-title">Lingue</h2>
+      <div class="languages-list">
+        <div class="lang-item">
+          <span class="lang-name">Italiano</span> — <span class="lang-level">Madrelingua</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Inglese</span> — <span class="lang-level">Fluente</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Spagnolo</span> — <span class="lang-level">Base</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <p class="privacy">
+      Autorizzo il trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003.
+    </p>
+
+  </div>
+
+</body>
+</html>
